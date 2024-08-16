@@ -15,6 +15,7 @@ app.get('/dog-breeds', async (req, res) => {
                 'x-api-key': apiKey
             }
         });
+        console.log("successfully fetched all dog breeds!")
         res.json(response.data);
     } catch (error) {
         res.status(500).send('Error fetching data from the Dog API');
@@ -27,9 +28,9 @@ app.get('/dog-image/:imageId', async (req, res) => {
 
     try {
         const response = await axios.get(`https://cdn2.thedogapi.com/images/${imageId}.jpg`, {
-            responseType: 'arraybuffer', // Ensures the response is in binary format
+            responseType: 'arraybuffer', 
         });
-
+        console.log(`successfully fetched image with ID: ${imageId}`)
         res.setHeader('Content-Type', 'image/jpeg');
         res.send(response.data);
     } catch (error) {
